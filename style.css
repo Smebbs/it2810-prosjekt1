@@ -1,0 +1,84 @@
+html {
+    color: #144149;
+    font-family: "Times New Roman";
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+body {
+    background-color: #97cfca;
+}
+
+p {
+    font-size: 22px;
+}
+
+canvas {
+    border:3px solid #144149;
+}
+  
+.grid {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 5% 22.5% 22.5% 22.5% 22.5% 5%;
+    grid-row-gap: 1em;
+}
+  
+.grid-item {
+    background-color: #e6feeb;
+    border: 1px solid #144149;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    grid-column: 2 / 6;
+}
+  
+#art {
+    grid-row: 0;
+    overflow: hidden;
+}
+
+#artist {
+    grid-row: 2;
+}
+
+button {
+    grid-row: 3;
+    color: #144149;
+    background-color: #3f7c9d;
+    border-radius: 20px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: #8ad5d8;
+    color: white;
+}
+
+button:focus {
+    outline: 0;
+}
+
+#doc-layout {
+    grid-row: 5;
+    grid-column: 2;
+}
+
+#doc-art {
+    grid-row: 5;
+    grid-column: 3;
+}
+
+#doc-jquery {
+    grid-row: 5;
+    grid-column: 4;
+}
+
+#doc-sources {
+    grid-row: 5;
+    grid-column: 5;
+}
