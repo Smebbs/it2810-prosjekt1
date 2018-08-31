@@ -23,8 +23,8 @@
         <div id="doc-layout" class="grid-item">
           <h1>Layout</h1>
           <p>
-            CSS-grid og Flexbox gir deg muligheten til å enkelt lage et fleksibelt layout for din side. 
-            De gjør det enklere å plassere de ulike komponentene på riktig plass, samt sørge for at layoutet 
+            CSS-grid og Flexbox gir deg muligheten til å enkelt lage et fleksibelt layout for din nettside. 
+            De gjør det begge enklere å plassere de ulike komponentene på riktig plass, samt sørge for at ditt layout 
             forblir konsistent med ulike skjermoppløsninger og nettlesere.
           </p>
           <p>
@@ -51,25 +51,26 @@
           <p>
             Canvas er et HTML element. Man bruker Canvas til å dedikere et område (en container) hvor man kan tegne grafikk på nettsiden.
             For å fylle containeren med den ønskete grafikken bruker man et JavaScript API. Det finnes enkle metoder for å tegne figurer
-            som sirkler, rektangler, linjer, osv. Canvas er enkelt å gjøre interaktivt, slik at brukeren kan kjapt f.eks. kan gjøre
+            som sirkler, rektangler, linjer, osv. Canvas er enkelt å gjøre interaktivt, slik at brukeren kjapt f.eks. kan gjøre
             endringer på Canvaset. Videre er også Canvas nokså effektivt til å animere mange objekter. Begge disse fordelene blir tydeligjort
             i kunstverket over. Andre fordeler med Canvas er ting som at det er enkelt å eksportere til et bilde i f.eks. .png format.
           </p>
           <p>
             SVG, eller Scalable Vector Format, deler som sagt mange likhetstrekk med Canvas. SVG blir også brukt til å definere, tegne og
-            animere 2D grafikk for nettsider. SVG støtter vektor grafikk, som gjør det mulig å kun matematisk definere figurene, istedenfor 
-            å holde styr på all informasjonen om pixelene som må til for å tegne figurene.
+            animere 2D grafikk for nettsider. SVG støtter derimot vektor grafikk, som gjør det mulig å kun matematisk definere figurene, istedenfor 
+            å holde styr på all informasjonen om pixelene som må til for å tegne figurene. Dette gjør  at figurene ikke avhenger av f.eks. oppløsningen
+            på skjermen.
           </p>
           <p>
-            En viktig forskjell mellom de to løsningene er at Canvas er avhengig av oppløsningen på skjermen, mens SVG ikke er dette.
-            Konsekvensen av dette er at Canvas må renderes på nytt hvis f.eks. størrelsen på vinduet endrer seg. Dette gjør at SVG er 
-            bedre egnet til ting som statiske logoer. En annen viktig forskjell er at Canvas generelt sett er mye raskere enn SVG, spesielt 
-            hvis grafikken blir kompleks. På grunn av dette er Canvas som ofte bedre egnet til ting som spill i browseren.
+            En viktig forskjell mellom de to løsningene er at Canvas er avhengig av oppløsningen på skjermen, mens SVG som nevnt ikke er det.
+            Konsekvensen av dette er at Canvas må renderes på nytt hvis f.eks. størrelsen på vinduet endrer seg og man vil bevare kvaliteten. 
+            Dette gjør at SVG er bedre egnet til ting som statiske logoer. En annen viktig forskjell er at Canvas generelt sett er mye raskere enn SVG, 
+            spesielt hvis grafikken blir kompleks. På grunn av dette er Canvas som ofte bedre egnet til ting som spill i browseren.
           </p>
           <p>
             Alt dette tatt til betraktning valgte jeg å bruke Canvas. Dette var naturlig siden jeg hadde planer om å animere tusenvis av figurer,
             og det var viktig å gjøre dette så effektivt som mulig. Canvas er enkelt å bruke, og det trengtes ikke mer enn rundt 150 linjer med
-            JavaScript kode for å dekke alt av funksjonalitet til denne nettsiden. Hvis man heller hadde valgt et kunstverk bestående av 10-15 interaktive
+            JavaScript/jQuery kode for å dekke alt av funksjonalitet til denne nettsiden. Hvis man heller hadde valgt et kunstverk bestående av 10-15 interaktive
             figurer, hadde det vært naturlig å velge SVG.
           </p>
         </div>
@@ -85,7 +86,7 @@
             er jQuery designet med et sterkt fokus på å ungå cross-browser problemer.
           </p>
           <p>
-            På denne siden bruker jeg blant annet jQuery til å legge til funksjonalitet knappen som viser og skjuler denne dokumentasjonen.
+            På denne siden bruker jeg blant annet jQuery til å legge til funksjonalitet til knappen som viser og skjuler denne dokumentasjonen.
             I tilegg brukes også et HTML paragraph tag som en knapp for å endre verktøyet til canvaset, for å vise at dette er enkelt med jQuery.
             Videre så tar også jQuery seg av å skjule dokumentasjonen når HTML filen er lastet inn.
           </p>
@@ -94,28 +95,51 @@
           <h1>Testing</h1>
           <p>
             For å sørge for at nettsiden fungerte i så mange nettlesere som mulig, forsøkte jeg å utforske hva som tradisjonelt kan gå galt
-            når man bruker Canvas for å animere figurer. Noe man blant annet ser resultatet av når jeg forsøker å forberede nettleseren på at
+            når man bruker Canvas for å animere figurer. Noe man blant annet ser resultatet av når jeg forsøker å fortelle nettleseren at
             jeg vil animere (ved å bruke forskjellige varianter av requestAnimationFrame). Jeg har dessverre ikke fått testet funksjonaliteten 
-            i flere nettlesere enn Google Chrome og Mozilla Firefox, men ved å forberede seg er det større sjanse for at det vil funke 
-            i utestete miljøer.
+            i flere nettlesere enn Google Chrome og Mozilla Firefox, men ved å forberede koden på de forskjellige populære nettleserene 
+            er det større sjanse for at det vil funke i utestete miljøer.
           </p>
           <p>
             Årsaken til at det er viktig å teste er at nettlesere kan fungere veldig forskjellig. Konsekvensen blir da at f.eks. HTML, CSS eller script 
             filene kan bli tolket ulikt. Som nevnt testet jeg Chrome og Firefox. Testene bestod av å grundig prøve all funksjonalitet på siden, samt
-            ha en konsoll åpen og se etter feilmeldinger. Det tok ikke lang tid å utføre disse testene, da siden ikke har alt for mye funksjonalitet.
+            ha en konsoll åpen og se etter feilmeldinger. Det tok ikke lang tid å utføre disse testene, da nettsiden ikke har alt for mye funksjonalitet.
             Jeg møtte ikke på noen problemer, verken i Chrome eller Firefox. Det må derimot nevnes at kunsten, og siden som en helhet, ser betydlig bedre 
             ut i Chrome. Derfor er Chrome den anbefalte browseren for dette prosjektet.
           </p>
         </div>
         <div id="doc-sources" class="grid-item">
           <h1>Sources</h1>
+          <p>
+            Her er de viktige kildene for prosjektets. w3schools og StackOverflow ble generelt sett brukt flittig for generell jQuery, CSS-grid og Canvas hjelp.
+          </p>
           <a href="https://stackoverflow.com/questions/5882716/html5-canvas-vs-svg-vs-div">
             StackOverflow - SVG vs Canvas
           </a>
           <br/>
           <br/>
-          <a href="https://www.w3schools.com">
-            w3schools
+          <a href="https://www.youtube.com/watch?v=hs3piaN4b5I&t=136s">
+            Youtube (Layout Land) - Flexbox vs CSS-grid 
+          </a>
+          <br/>
+          <br/>
+          <a href="https://en.wikipedia.org/wiki/JQuery">
+            Wikipedia - jQuery
+          </a>
+          <br/>
+          <br/>
+          <a href="https://www.w3schools.com/Jquery/jquery_syntax.asp">
+            w3schools - jQuery
+          </a>
+          <br/>
+          <br/>
+          <a href="http://www.color-hex.com/color-palette/65426">
+            Color-Hex - Color Palette
+          </a>
+          <br/>
+          <br/>
+          <a href="https://codepen.io/dissimulate/pen/KrAwx">
+            Codepen - Inspiration
           </a>
         </div>
       <button id="btn-show" class="grid-item">Show/Hide project documentation</div>

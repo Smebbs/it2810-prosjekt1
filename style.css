@@ -3,6 +3,11 @@ html {
     font-family: "Times New Roman";
 }
 
+a {
+    color: #144149;
+    font-family: "Times New Roman";
+}
+
 h1 {
     text-align: center;
     font-size: 50px;

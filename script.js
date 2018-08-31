@@ -9,7 +9,7 @@ $("document").ready(function() {
         else {
             $(documentation).hide();
         }
-        window.scrollTo(0,document.body.scrollHeight);
+        window.scrollTo(0, document.body.scrollHeight * 0.3);
     });
 
     // Init the canvas
