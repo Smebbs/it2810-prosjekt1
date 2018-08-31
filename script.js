@@ -1,7 +1,7 @@
 $("document").ready(function() {
-    let documentation = "#doc-layout, #doc-art, #doc-jquery, #doc-sources"
+    // Set up documentation
+    let documentation = "#doc-layout, #doc-art, #doc-jquery, #doc-testing, #doc-sources"
     $(documentation).hide();
-    init()
     $("#btn-show").click(function() {
         if ($(documentation).is(":hidden")) {
             $(documentation).show();
@@ -9,7 +9,17 @@ $("document").ready(function() {
         else {
             $(documentation).hide();
         }
+        window.scrollTo(0,document.body.scrollHeight);
     });
+
+    // Init the canvas
+    init()
+
+    // Set up the tool button
+    $("#text-tool").click(function() {
+        console.log(tool)
+        tool = !tool
+    })
 });
 
 // Content variables
@@ -19,12 +29,13 @@ let w = 1400;
 let h = 700;
 let spacingX = w / Math.sqrt(n_particles) * 0.5;
 let spacingY = h / Math.sqrt(n_particles);
+let tool = 0 // 0 = circles, 1 = squares
 
 // Mouse variables
 let mouseX = 0;
 let mouseY = 0;
 let mouseDown = false;
-let soi = 50; // Sphere of influence
+let soi = 35; // Sphere of influence
 
 // Canvas variables
 let canvas = document.getElementById('canvas');
@@ -43,6 +54,9 @@ let Particle = function(x, y) {
     this.y = y; // Y position
     this.vx = 0; // X velociy
     this.vy = 0; // Y velociy
+    this.radius = 7;
+    this.color = "#144149"
+    this.shape = 0 // 0 = circles, 1 = squares
 }
 
 Particle.prototype.update = function (){
@@ -71,18 +85,24 @@ Particle.prototype.update = function (){
         if (distance < soi) {
             this.vx = Math.cos(angle) * (soi - distance) * 0.2;
             this.vy = Math.sin(angle) * (soi - distance) * 0.2;
+            this.radius += 1
+            if (!tool) this.color = "#3f7c9d"; else this.color = "#97cfca"
+            this.shape = tool
         }
     }
 }
 
 Particle.prototype.draw = function() {
     context.beginPath();
-    context.arc(this.x, this.y, 5, 0, 2 * Math.PI);
-    if (this.vx + this.vy != 0) {
-        context.strokeStyle = "#8ad5d8"
-    } else {
-        context.strokeStyle = "#144149"; 
+    if (this.radius >= 20) {
+        this.radius = 20
     }
+    if (!this.shape) {
+        context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+    } else {
+        context.rect(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2)
+    }
+    context.strokeStyle = this.color
     context.stroke();
 }
 

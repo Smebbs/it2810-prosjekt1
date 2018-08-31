@@ -23,7 +23,7 @@ canvas {
 .grid {
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: 5% 22.5% 22.5% 22.5% 22.5% 5%;
+    grid-template-columns: 5% 18% 18% 18% 18% 18% 5%;
     grid-row-gap: 1em;
 }
   
@@ -33,7 +33,7 @@ canvas {
     padding: 20px;
     font-size: 30px;
     text-align: center;
-    grid-column: 2 / 6;
+    grid-column: 2 / 7;
 }
   
 #art {
@@ -45,22 +45,32 @@ canvas {
     grid-row: 2;
 }
 
-button {
+#btn-show {
     grid-row: 3;
-    color: #144149;
-    background-color: #3f7c9d;
     border-radius: 20px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
 }
 
-button:hover {
+#btn-show:hover {
     background-color: #8ad5d8;
-    color: white;
+    cursor: pointer;
 }
 
-button:focus {
+#btn-show:focus {
     outline: 0;
+}
+
+#text-tool {
+    border-radius: 10px;
+    margin-left: 40%;
+    margin-right: 40%;
+    border:3px solid #144149;
+}
+
+#text-tool:hover {
+    background-color: #8ad5d8;
+    cursor: pointer;
 }
 
 #doc-layout {
@@ -78,7 +88,12 @@ button:focus {
     grid-column: 4;
 }
 
-#doc-sources {
+#doc-testing {
     grid-row: 5;
     grid-column: 5;
+}
+
+#doc-sources {
+    grid-row: 5;
+    grid-column: 6;
 }
